@@ -28,7 +28,33 @@ mongoose.connect(dbConfig.url, {
 
 // define a simple route
 app.get('/', (req, res) => {
-    res.json({"message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
+    res.json([{
+            "id":1,
+            "name" : "Rahul Narvekar",
+            "major": "CS and Econ",
+            "resume" : "https://drive.google.com/file/d/1hezwS7qfRwCvbGV8wNhLqvqXQxQp7-dH/view?usp=sharing",
+            "status": "pending"
+        },{
+            "id":2,
+            "name" : "Charles Chow",
+            "major": "CS and Business",
+            "resume" : "https://drive.google.com/file/d/1hezwS7qfRwCvbGV8wNhLqvqXQxQp7-dH/view?usp=sharing",
+            "status": "pending"
+        },{
+            "id":3,
+            "name" : "Saurav Bahali",
+            "major": "CS and Econ",
+            "resume" : "https://drive.google.com/file/d/1hezwS7qfRwCvbGV8wNhLqvqXQxQp7-dH/view?usp=sharing",
+            "status": "approved",
+            "tags": "Swfit, NodeJS, Express, Java, OOP"
+        },{
+            "id":4,
+            "name" : "Habib Khadri",
+            "major": "CS and Business",
+            "resume" : "https://drive.google.com/file/d/1hezwS7qfRwCvbGV8wNhLqvqXQxQp7-dH/view?usp=sharing",
+            "status": "approved",
+            "tags": "Trello, Product Management, Java, OOP"
+        }]);
 });
 
 require('./app/routes/note.routes.js')(app);
