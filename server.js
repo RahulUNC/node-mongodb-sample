@@ -1,4 +1,6 @@
 const express = require('express');
+var fs = require('fs')
+var https = require('https')
 const bodyParser = require('body-parser');
 var cors = require('cors')
 
@@ -63,6 +65,9 @@ app.get('/', (req, res) => {
 require('./app/routes/resume.routes.js')(app);
 
 // listen for requests
-app.listen(8080, () => {
+https.createServer({
+    key:fs.readFileSync('server.key'),
+    cert:fs.readFileSync('server.cert')
+}, app).listen(8080, () => {
     console.log("Server is listening on port 8080");
 });
