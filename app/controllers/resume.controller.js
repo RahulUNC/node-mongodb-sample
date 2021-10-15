@@ -11,7 +11,7 @@ exports.create = (req, res) => {
 
     // Create a Resume
     const resume = new Resume({
-        title: req.body.title || "Untitled Resume", 
+        name: req.body.name || "Untitled Resume", 
         link: req.body.link,
         major: req.body.major,
         tags: req.body.tags
