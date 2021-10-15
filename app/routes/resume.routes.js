@@ -5,9 +5,9 @@ module.exports = (app) => {
     app.post('/resumes', resumes.create);
 
     // Retrieve all Notes
-    app.get('/notes', resumes.findAll);
+    app.get('/resumes', resumes.findAll);
 
     // Retrieve a single Note with noteId
-    app.get('/notes/:noteId', resumes.findOne);
+    app.get('/resumes/:Id', resumes.findOne);
 
 }
