@@ -3,9 +3,9 @@ const Resume = require('../models/resume.model.js');
 // Create and Save a new Resume
 exports.create = (req, res) => {
     // Validate request
-    if(!req.body.content) {
+    if(!req.body.name) {
         return res.status(400).send({
-            message: "Resume content can not be empty"
+            message: "Resume name can not be empty"
         });
     }
 

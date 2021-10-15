@@ -8,6 +8,6 @@ module.exports = (app) => {
     app.get('/resumes', resumes.findAll);
 
     // Retrieve a single Note with noteId
-    app.get('/resumes/:Id', resumes.findOne);
+    app.get('/resumes/:resumeId', resumes.findOne);
 
 }
