@@ -60,7 +60,7 @@ app.get('/', (req, res) => {
         }]);
 });
 
-require('./app/routes/note.routes.js')(app);
+require('./app/routes/resume.routes.js')(app);
 
 // listen for requests
 app.listen(8080, () => {
