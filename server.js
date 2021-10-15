@@ -63,6 +63,6 @@ app.get('/', (req, res) => {
 require('./app/routes/resume.routes.js')(app);
 
 // listen for requests
-app.listen(8080, () => {
+app.listen(443, () => {
     console.log("Server is listening on port 8080");
 });
