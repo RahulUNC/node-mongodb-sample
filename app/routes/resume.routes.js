@@ -11,6 +11,6 @@ module.exports = (app) => {
     app.get('/resumes/:resumeId', resumes.findOne);
 
     // Delete a Resume with ResumeId
-    app.delete('/notes/:ResumeId', resumes.delete);
+    app.delete('/resumes/:resumeId', resumes.delete);
 
 }
