@@ -1,21 +1,67 @@
-# EasyNotes Application
+# Honors Carolina Resume App
 
-Build a Restful CRUD API for a simple Note-Taking application using Node.js, Express and MongoDB.
+CRUD API for Resumes
 
-## Steps to Setup
+## End Points
 
-1. Install dependencies
-
+GET: https://node-mongodb-sample-git-rnarveka.apps.cloudapps.unc.edu/resumes
+Return response:
 ```bash
-npm install
+[
+    {
+        "_id": "MongoID",
+        "name": "name",
+        "link": "resume link",
+        "major": "student major",
+        "tags": "useful tags for student's resume",
+        "approved": "approved/pending status",
+        "createdAt": "when created",
+        "updatedAt": "when updated",
+        "__v": 0
+    },...
+]
 ```
 
-2. Run Server
-
+GET: https://node-mongodb-sample-git-rnarveka.apps.cloudapps.unc.edu/resumes/{resumeID}
+Return response:
 ```bash
-node server.js
+[
+    {
+        "_id": "MongoID",
+        "name": "name",
+        "link": "resume link",
+        "major": "student major",
+        "tags": "useful tags for student's resume",
+        "approved": "approved/pending status",
+        "createdAt": "when created",
+        "updatedAt": "when updated",
+        "__v": 0
+    }
+]
 ```
-
-You can browse the apis at <http://localhost:8080>
+PUT: https://node-mongodb-sample-git-rnarveka.apps.cloudapps.unc.edu/resumes
+post Body:
+```bash
+[
+    {
+        "_id": "MongoID",
+        "name": "name",
+        "link": "resume link",
+        "major": "student major",
+        "tags": "useful tags for student's resume",
+        "approved": "approved/pending status",
+    }
+]
+```
+UPDATE: https://node-mongodb-sample-git-rnarveka.apps.cloudapps.unc.edu/resumes/{resumeId}
+update Body:
+```bash
+[
+    {
+        "approved": "approved/pending status",
+    }
+]
+```
+DELETE: https://node-mongodb-sample-git-rnarveka.apps.cloudapps.unc.edu/resumes/{resumeId}
 
 
