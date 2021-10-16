@@ -100,18 +100,19 @@ exports.update = (req, res) => {
     .then(resume => {
         if(!resume) {
             return res.status(404).send({
-                message: "Note not found with id " + req.params.resumeId
+                message: "Resume not found with id " + req.params.resumeId
             });
         }
         res.send(note);
     }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({
-                message: "Note not found with id " + req.params.resumeId
+                message: "Resume not found with id " + req.params.resumeId
             });                
         }
         return res.status(500).send({
-            message: "Error updating note with id " + req.params.resumeId
+            message: "Error updating Resume with id " + req.params.resumeId,
+            err: err
         });
     });
 };
