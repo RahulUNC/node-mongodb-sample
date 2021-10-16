@@ -13,4 +13,7 @@ module.exports = (app) => {
     // Delete a Resume with ResumeId
     app.delete('/resumes/:resumeId', resumes.delete);
 
+    // Update a Note with noteId
+    app.put('/resumes/:resumeId', resumes.update);
+
 }

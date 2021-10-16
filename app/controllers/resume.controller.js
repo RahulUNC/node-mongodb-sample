@@ -84,3 +84,39 @@ exports.delete = (req, res) => {
         });
     });
 };
+
+// Update a Resume identified by the resumeId in the request
+exports.update = (req, res) => {
+    // Validate Request
+    if(!req.body.approved) {
+        return res.status(400).send({
+            message: "Resume approved/pending can not be empty"
+        });
+    }
+
+    // Find note and update it with the request body
+    Resume.findByIdAndUpdate(req.params.resumeId, {
+        name: req.body.name, 
+        link: req.body.link,
+        major: req.body.major,
+        tags: req.body.tags,
+        approved: req.body.approved
+    }, {new: true})
+    .then(resume => {
+        if(!resume) {
+            return res.status(404).send({
+                message: "Note not found with id " + req.params.resumeId
+            });
+        }
+        res.send(note);
+    }).catch(err => {
+        if(err.kind === 'ObjectId') {
+            return res.status(404).send({
+                message: "Note not found with id " + req.params.resumeId
+            });                
+        }
+        return res.status(500).send({
+            message: "Error updating note with id " + req.params.resumeId
+        });
+    });
+};

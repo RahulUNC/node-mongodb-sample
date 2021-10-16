@@ -31,33 +31,9 @@ mongoose.connect(dbConfig.url, {
 
 // define a simple route
 app.get('/', (req, res) => {
-    res.json([{
-            "id":1,
-            "name" : "Rahul Narvekar",
-            "major": "CS and Econ",
-            "resume" : "https://drive.google.com/file/d/1hezwS7qfRwCvbGV8wNhLqvqXQxQp7-dH/view?usp=sharing",
-            "status": "pending"
-        },{
-            "id":2,
-            "name" : "Charles Chow",
-            "major": "CS and Business",
-            "resume" : "https://drive.google.com/file/d/1hezwS7qfRwCvbGV8wNhLqvqXQxQp7-dH/view?usp=sharing",
-            "status": "pending"
-        },{
-            "id":3,
-            "name" : "Saurav Bahali",
-            "major": "CS and Econ",
-            "resume" : "https://drive.google.com/file/d/1hezwS7qfRwCvbGV8wNhLqvqXQxQp7-dH/view?usp=sharing",
-            "status": "approved",
-            "tags": "Swfit, NodeJS, Express, Java, OOP"
-        },{
-            "id":4,
-            "name" : "Habib Khadri",
-            "major": "CS and Business",
-            "resume" : "https://drive.google.com/file/d/1hezwS7qfRwCvbGV8wNhLqvqXQxQp7-dH/view?usp=sharing",
-            "status": "approved",
-            "tags": "Trello, Product Management, Java, OOP"
-        }]);
+    res.json({
+        "welcome" : "This is the Honors Carolina Resume App backend ExpressJS API. From here you can CRUD resumes stored in MongoDB."
+    });
 });
 
 require('./app/routes/resume.routes.js')(app);
