@@ -112,7 +112,6 @@ exports.update = (req, res) => {
         }
         return res.status(500).send({
             message: "Error updating Resume with id " + req.params.resumeId,
-            err: err
         });
     });
 };
