@@ -25,42 +25,36 @@ Return response:
 GET: https://node-mongodb-sample-git-rnarveka.apps.cloudapps.unc.edu/resumes/{resumeID}
 Return response:
 ```bash
-[
-    {
-        "_id": "MongoID",
-        "name": "name",
-        "link": "resume link",
-        "major": "student major",
-        "tags": "useful tags for student's resume",
-        "approved": "approved/pending status",
-        "createdAt": "when created",
-        "updatedAt": "when updated",
-        "__v": 0
-    }
-]
+{
+    "_id": "MongoID",
+    "name": "name",
+    "link": "resume link",
+    "major": "student major",
+    "tags": "useful tags for student's resume",
+    "approved": "approved/pending status",
+    "createdAt": "when created",
+    "updatedAt": "when updated",
+    "__v": 0
+}
 ```
-PUT: https://node-mongodb-sample-git-rnarveka.apps.cloudapps.unc.edu/resumes
+POST: https://node-mongodb-sample-git-rnarveka.apps.cloudapps.unc.edu/resumes
 post Body:
 ```bash
-[
-    {
-        "_id": "MongoID",
-        "name": "name",
-        "link": "resume link",
-        "major": "student major",
-        "tags": "useful tags for student's resume",
-        "approved": "approved/pending status",
-    }
-]
+{
+     "_id": "MongoID",
+    "name": "name",
+    "link": "resume link",
+    "major": "student major",
+    "tags": "useful tags for student's resume",
+    "approved": "approved/pending status",
+}
 ```
-UPDATE: https://node-mongodb-sample-git-rnarveka.apps.cloudapps.unc.edu/resumes/{resumeId}
+PUT: https://node-mongodb-sample-git-rnarveka.apps.cloudapps.unc.edu/resumes/{resumeId}
 update Body:
 ```bash
-[
-    {
-        "approved": "approved/pending status",
-    }
-]
+{
+    "approved": "approved/pending status",
+}
 ```
 DELETE: https://node-mongodb-sample-git-rnarveka.apps.cloudapps.unc.edu/resumes/{resumeId}
 
