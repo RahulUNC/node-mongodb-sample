@@ -93,15 +93,10 @@ exports.update = (req, res) => {
             message: "Resume approved/pending can not be empty"
         });
     }
-
     // Find note and update it with the request body
     Resume.findByIdAndUpdate(req.params.resumeId, {
-        name: req.body.name, 
-        link: req.body.link,
-        major: req.body.major,
-        tags: req.body.tags,
         approved: req.body.approved
-    }, {new: true})
+    })
     .then(resume => {
         if(!resume) {
             return res.status(404).send({

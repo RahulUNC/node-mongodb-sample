@@ -10,10 +10,10 @@ module.exports = (app) => {
     // Retrieve a single Resume with resumeId
     app.get('/resumes/:resumeId', resumes.findOne);
 
-    // Delete a Resume with ResumeId
+    // Delete a Resume with resumeId
     app.delete('/resumes/:resumeId', resumes.delete);
 
-    // Update a Note with noteId
+    // Update a Resume with resumeId
     app.put('/resumes/:resumeId', resumes.update);
 
 }
