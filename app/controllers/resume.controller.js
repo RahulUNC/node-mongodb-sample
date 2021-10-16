@@ -103,7 +103,7 @@ exports.update = (req, res) => {
                 message: "Resume not found with id " + req.params.resumeId
             });
         }
-        res.send(note);
+        res.send(resume);
     }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({
