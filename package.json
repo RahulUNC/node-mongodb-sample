@@ -4,7 +4,7 @@
   "description": "This is the Honors Carolina Resume App backend ExpressJS API. From here you can CRUD resumes stored in MongoDB.",
   "main": "server.js",
   "scripts": {
-    "test": "nyc mocha",
+    "test": "nyc mocha -t 7000",
     "start": "node server.js"
   },
   "keywords": [

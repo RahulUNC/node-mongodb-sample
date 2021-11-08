@@ -60,4 +60,100 @@ describe("API", ()=>{
         .get(`/resumes/${id}`)
         .expect(404)
     })
+    it("Should refuse to accept invalid input for approved status", async ()=> {
+        const body = {
+            "name": "Test Khadri",
+            "link": "https://drive.google.com/file/d/1_HYqEm9-L49kzmsFRoidDwMdjrlOxHbC/view?usp=sharing",
+            "major": "Business, CS",
+            "tags": "Project Management, Trello, Organization",
+            "approved": "pending"
+        }
+        const postRes = await request(server)
+        .post("/resumes")
+        .send(body)
+        .expect(200)
+        const id = postRes.body._id
+        var approveBody = {
+            "approved": 4
+        }
+        var approveRes = await request(server)
+        .put(`/resumes/${id}`)
+        .send(approveBody)
+        .expect(400)
+        approveBody = {
+            "approved": "$"
+        }
+        approveRes = await request(server)
+        .put(`/resumes/${id}`)
+        .send(approveBody)
+        .expect(400)
+        approveBody = {
+            "approved": "approooooved"
+        }
+        approveRes = await request(server)
+        .put(`/resumes/${id}`)
+        .send(approveBody)
+        .expect(400)
+        approveBody = {
+            "approved": "approved"
+        }
+        approveRes = await request(server)
+        .put(`/resumes/${id+"282*d"}`)
+        .send(approveBody)
+        .expect(404)
+        const deleteRes = await request(server)
+        .delete(`/resumes/${id}`)
+        .expect(200)
+    })
+    it("Should refuse to create a resume when not given all relavant information", async()=> {
+        var body = {
+            "link": "https://drive.google.com/file/d/1_HYqEm9-L49kzmsFRoidDwMdjrlOxHbC/view?usp=sharing",
+            "major": "Business, CS",
+            "tags": "Project Management, Trello, Organization",
+        }
+        var postRes = await request(server)
+        .post("/resumes")
+        .send(body)
+        .expect(400)
+        body = {
+            "name": "Test Khadri",
+            "link": "https://drive.google.com/file/d/1_HYqEm9-L49kzmsFRoidDwMdjrlOxHbC/view?usp=sharing",
+            "major": "Business, CS",
+            "tags": "Project Management, Trello, Organization",
+        }
+        postRes = await request(server)
+        .post("/resumes")
+        .send(body)
+        .expect(400)
+        body = {
+            "name": "Test Khadri",
+            "link": "https://drive.google.com/file/d/1_HYqEm9-L49kzmsFRoidDwMdjrlOxHbC/view?usp=sharing",
+            "tags": "Project Management, Trello, Organization",
+            "approved": "pending"
+        }
+        postRes = await request(server)
+        .post("/resumes")
+        .send(body)
+        .expect(400)
+    })
+    it("Should fail to delete a resume which does not exist or when given malformed ID", async ()=> {
+        const body = {
+            "name": "Test Khadri",
+            "link": "https://drive.google.com/file/d/1_HYqEm9-L49kzmsFRoidDwMdjrlOxHbC/view?usp=sharing",
+            "major": "Business, CS",
+            "tags": "Project Management, Trello, Organization",
+            "approved": "pending"
+        }
+        const postRes = await request(server)
+        .post("/resumes")
+        .send(body)
+        .expect(200)
+        const id = postRes.body._id
+        await request(server)
+        .delete(`/resumes/${id + "32#"}`)
+        .expect(404)
+        const deleteRes = await request(server)
+        .delete(`/resumes/${id}`)
+        .expect(200)
+    })
 })
