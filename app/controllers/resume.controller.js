@@ -23,7 +23,7 @@ exports.create = (req, res) => {
             message: "Please enter a comma or space separated list of tags!"
         });
     }
-    if(req.body.approved != "approved" || req.body.approved != "pending") {
+    if(!req.body.approved) {
         return res.status(404).send({
             message: "Status can only be approved or pending!"
         })
