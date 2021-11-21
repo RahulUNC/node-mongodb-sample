@@ -23,7 +23,7 @@ exports.create = (req, res) => {
             message: "Please enter a comma or space separated list of tags!"
         });
     }
-    if(req.body.approved != ("approved" || "pending")) {
+    if(req.body.approved != "approved" || req.body.approved != "pending") {
         return res.status(404).send({
             message: "Status can only be approved or pending!"
         })
@@ -112,11 +112,6 @@ exports.update = (req, res) => {
         return res.status(404).send({
             message: "Resume approved/pending can not be empty"
         });
-    }
-    if(!req.body.approved != ("approved" || "pending")) {
-        return res.status(404).send({
-            message: "Status can only be approved or pending!"
-        })
     }
 
     // Find resume and update it with the request body
