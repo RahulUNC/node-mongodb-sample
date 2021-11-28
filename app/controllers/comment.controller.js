@@ -32,7 +32,6 @@ exports.update = (req, res) => {
         });
     }).then(found => {
         found.comments.push({
-            index: found.comments.length,
             name: req.body.name,
             comment: req.body.comment
         })
