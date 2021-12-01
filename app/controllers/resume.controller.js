@@ -85,6 +85,7 @@ exports.findOne = (req, res) => {
 
 // Delete a resume with the specified resumeId in the request
 exports.delete = (req, res) => {
+    // TODO: Validate ID
     Resume.findByIdAndRemove(req.params.resumeId)
     .then(resume => {
         if(!resume) {
@@ -113,7 +114,6 @@ exports.update = (req, res) => {
             message: "Resume approved/pending can not be empty"
         });
     }
-
     // Find resume and update it with the request body
     Resume.findByIdAndUpdate(req.params.resumeId, {
         approved: req.body.approved
